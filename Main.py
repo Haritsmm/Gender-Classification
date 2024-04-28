@@ -1,6 +1,7 @@
 import streamlit as st
 import joblib
 import time
+from PIL import Image
 
 # Load model
 model = joblib.load('Klasifikasi_Model_Gender.pkl')
@@ -21,39 +22,41 @@ beverage_encoded = label_encoder.fit_transform(beverage_op)
 soft_drink_encoded = label_encoder.fit_transform(soft_drink_op)
 
 # Streamlit app
-st.title('Aplikasi Prediksi Jenis Kelamin')
+st.set_page_config(page_title="Aplikasi Prediksi Jenis Kelamin", page_icon=":busts_in_silhouette:", layout="wide")
+st.title(':busts_in_silhouette: Aplikasi Prediksi Jenis Kelamin')
 
 col1, col2 = st.columns(2)
 with col1:
+    st.image("https://www.publicdomainpictures.net/pictures/320000/nahled/gender-equality-symbol.jpg", width=200)
     fav_color = st.selectbox(
-    "Warna Favotire",
+    "Warna Favorit",
     color_op,
     index=None,
-    placeholder="Pilih Warna Favorite...",
+    placeholder="Pilih Warna Favorit...",
     )
     fav_music_genre = st.selectbox(
-    " Genre Music Favorite",
+    "Genre Musik Favorit",
     music_genre_op,
     index=None,
-    placeholder="Pilih Genre Music Favorite...",
+    placeholder="Pilih Genre Musik Favorit...",
     )
 with col2:
     fav_beverage = st.selectbox(
-    "Minuman Favorite ",
+    "Minuman Favorit",
     beverage_op,
     index=None,
-    placeholder="Pilih Minuman Favorite...",
+    placeholder="Pilih Minuman Favorit...",
     )
     fav_soft_drink = st.selectbox(
-    "Soft Drink Favorite",
+    "Soft Drink Favorit",
     soft_drink_op,
     index=None,
-    placeholder="Pilih Soft Drink Favorite...",
+    placeholder="Pilih Soft Drink Favorit...",
     )
 
 bt1, bt2, bt3 = st.columns(3)
 with bt2:
-    if st.button("Predict", type="primary"):
+    if st.button("Prediksi", type="primary"):
         # Display loading animation
         with st.spinner('Melakukan Processing...'):
             # Lengthy process or time-consuming task
@@ -70,7 +73,7 @@ with bt2:
 
         if predicted_rest[0] == 1:
             predicted_value = "Wanita"
-            st.title(f':red[{predicted_value}]')
+            st.title(f':pink[{predicted_value}]')
         else:
             predicted_value = "Pria"
-            st.title(f':blue[{predicted_value}]')
+            st.title(f':green[{predicted_value}]')
