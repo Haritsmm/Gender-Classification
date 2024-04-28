@@ -42,7 +42,7 @@ soft_drink_map = {
 }
 
 # Muat model
-model = joblib.load('Transformed Data Set - Sheet1.csv')
+model = joblib.load('Main.pkl')
 
 # Tampilkan judul aplikasi
 st.title('Gender Prediction App')
