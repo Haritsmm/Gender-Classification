@@ -21,41 +21,41 @@ beverage_encoded = label_encoder.fit_transform(beverage_op)
 soft_drink_encoded = label_encoder.fit_transform(soft_drink_op)
 
 # Streamlit app
-st.title('Gender Prediction App')
+st.title('Aplikasi Prediksi Jenis Kelamin')
 
 col1, col2 = st.columns(2)
 with col1:
     fav_color = st.selectbox(
-    "Favorite Color",
+    "Warna Favotire",
     color_op,
     index=None,
-    placeholder="Select Favorite Color...",
+    placeholder="Pilih Warna Favorite...",
     )
     fav_music_genre = st.selectbox(
-    "Favorite Music Genre",
+    " Genre Music Favorite",
     music_genre_op,
     index=None,
-    placeholder="Select Favorite Music Genre...",
+    placeholder="Pilih Genre Music Favorite...",
     )
 with col2:
     fav_beverage = st.selectbox(
-    "Favorite Beverage",
+    "Minuman Favorite ",
     beverage_op,
     index=None,
-    placeholder="Select Favorite Beverage...",
+    placeholder="Pilih Minuman Favorite...",
     )
     fav_soft_drink = st.selectbox(
-    "Favorite Soft Drink",
+    "Soft Drink Favorite",
     soft_drink_op,
     index=None,
-    placeholder="Select Favorite Soft Drink...",
+    placeholder="Pilih Soft Drink Favorite...",
     )
 
 bt1, bt2, bt3 = st.columns(3)
 with bt2:
     if st.button("Predict", type="primary"):
         # Display loading animation
-        with st.spinner('Processing...'):
+        with st.spinner('Melakukan Processing...'):
             # Lengthy process or time-consuming task
             time.sleep(2)  # Example of a 2-second process
 
@@ -69,8 +69,8 @@ with bt2:
         predicted_rest = model.predict([[color_selected, music_genre_selected, beverage_selected, soft_drink_selected]])
 
         if predicted_rest[0] == 1:
-            predicted_value = "Female"
+            predicted_value = "Wanita"
             st.title(f':red[{predicted_value}]')
         else:
-            predicted_value = "Man"
+            predicted_value = "Pria"
             st.title(f':blue[{predicted_value}]')
