@@ -27,7 +27,6 @@ st.title(':busts_in_silhouette: Aplikasi Prediksi Jenis Kelamin')
 
 col1, col2 = st.columns(2)
 with col1:
-    st.image("https://www.publicdomainpictures.net/pictures/320000/nahled/gender-equality-symbol.jpg", width=200)
     fav_color = st.selectbox(
     "Warna Favorit",
     color_op,
